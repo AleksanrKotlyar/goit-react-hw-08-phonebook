@@ -25,3 +25,12 @@ export const Plug = styled.p`
   margin-top: ${p => p.theme.space[3]}px;
   padding-left: ${p => p.theme.space[3]}px;
 `;
+
+export const WrapSpinner = styled.div`
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
