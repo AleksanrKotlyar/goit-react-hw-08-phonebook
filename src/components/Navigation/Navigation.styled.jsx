@@ -8,7 +8,9 @@ export const Link = styled(NavLink)`
   font-weight: 700;
   color: #2a363b;
 
+  :hover,
+  :focus,
   :active {
-    color: #e84a5f;
+    color: ${p => p.theme.colors.colorTitle};
   }
 `;
