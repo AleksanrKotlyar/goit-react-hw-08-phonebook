@@ -16,9 +16,9 @@ export const ContactList = () => {
 
   return (
     <Box mr="auto" ml="auto" mt="5px" pl="2" as="ul">
-      {renderContactsList.map(({ id, name, phone }) => (
+      {renderContactsList.map(({ id, name, number }) => (
         <ContactItem key={id}>
-          <Item name={name} phone={phone} id={id} />
+          <Item name={name} number={number} id={id} />
         </ContactItem>
       ))}
     </Box>

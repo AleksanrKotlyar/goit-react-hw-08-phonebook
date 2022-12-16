@@ -5,13 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/contacts/contactsOperations';
 import { IsLoading } from 'redux/contacts/selectors';
 
-export const Item = ({ name, phone, id }) => {
+export const Item = ({ name, number, id }) => {
   const dispatch = useDispatch();
   const isLoading = useSelector(IsLoading);
 
   return (
     <>
-      {name}: <ContactNumber>{phone}</ContactNumber>
+      {name}: <ContactNumber>{number}</ContactNumber>
       <DeleteBtn
         type="button"
         disabled={isLoading}
@@ -26,6 +26,6 @@ export const Item = ({ name, phone, id }) => {
 
 Item.propTypes = {
   name: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
 };

@@ -6,10 +6,7 @@ const contacts = createReducer([], {
 
   [addContact.fulfilled]: (state, action) => {
     return [action.payload, ...state.contacts];
-    // state.contacts.push([...action.payload]);
-    // state.contacts = [{ ...action.payload }, ...state.contacts];
-    // return { ...action.payload }, [...state.contacts.contacts];
-    // state.contacts = [action.payload, ...state.contacts];
+   
   },
   [deleteContact.fulfilled]: (state, action) => {
     const index = state.contacts.findIndex(

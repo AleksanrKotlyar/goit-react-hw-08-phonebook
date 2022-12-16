@@ -10,7 +10,7 @@ import toast from 'react-hot-toast';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
@@ -19,8 +19,8 @@ export const ContactForm = () => {
       case 'name':
         setName(e.target.value);
         break;
-      case 'phone':
-        setPhone(e.target.value);
+      case 'number':
+        setNumber(e.target.value);
         break;
       default:
         console.log('Invalid subscription type');
@@ -48,13 +48,13 @@ export const ContactForm = () => {
       : dispatch(
           addContact({
             name: e.currentTarget.elements.name.value,
-            phone: e.currentTarget.elements.phone.value,
+            number: e.currentTarget.elements.number.value,
           })
         );
 
     if (!IsContactInList) {
       setName('');
-      setPhone('');
+      setNumber('');
     }
   };
 
@@ -84,8 +84,8 @@ export const ContactForm = () => {
         Number
         <InputForm
           type="tel"
-          name="phone"
-          value={phone}
+          name="number"
+          value={number}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required

@@ -1,15 +1,3 @@
-// import { PhoneBook } from './PhoneBook/PhoneBook';
-// import { Toaster } from 'react-hot-toast';
-
-// export const App = () => {
-//   return (
-//     <>
-//       <Toaster position="top-right" />
-//       <PhoneBook />
-//     </>
-//   );
-// };
-
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
@@ -42,7 +30,7 @@ export const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route
-            path="register"
+            path="/register"
             element={
               <RestrictedRoute
                 redirectTo="/contacts"
@@ -51,10 +39,10 @@ export const App = () => {
             }
           />
           <Route
-            path="login"
+            path="/login"
             element={
               <RestrictedRoute
-                redirectTo="contacts"
+                redirectTo="/contacts"
                 component={<LoginPage />}
               />
             }
@@ -62,7 +50,7 @@ export const App = () => {
           <Route
             path="/contacts"
             element={
-              <PrivateRoute redirectTo="login" component={<ContactsPage />} />
+              <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
             }
           />
           <Route path="*" element={<NotFoundPage />} />

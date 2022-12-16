@@ -2,7 +2,6 @@ import { Helmet } from 'react-helmet';
 import { LoginForm } from 'components/LoginForm/LoginForm';
 
 export default function Login() {
-  console.log('come in');
   return (
     <div>
       <Helmet>
