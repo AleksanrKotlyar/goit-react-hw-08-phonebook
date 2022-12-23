@@ -11,7 +11,7 @@ export const InputForm = styled.input`
   border-radius: ${p => p.theme.radii.normal};
   outline: none;
 
-  :autofocus,
+  :active,
   :hover,
   :focus {
     background-color: ${p => p.theme.colors.colorInteract};

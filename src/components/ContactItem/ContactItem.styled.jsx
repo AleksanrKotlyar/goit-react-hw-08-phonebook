@@ -36,6 +36,6 @@ export const EditBtn = styled(AiFillEdit)`
   :active,
   :hover,
   :focus {
-    color: ${p => p.theme.colors.cardAccent};
+    color: ${p => p.theme.colors.colorTitle};
   }
 `;
