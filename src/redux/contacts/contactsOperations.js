@@ -39,14 +39,29 @@ export const deleteContact = createAsyncThunk(
     }
   }
 );
+// ---------not use, get  this data from local storage
+// export const getContactById = createAsyncThunk(
+//   'contacts/getContactById',
+//   async (contactId, { rejectWithValue }) => {
+//     try {
+//       const response = await axios.get(`/contacts/${contactId}`);
+//       console.log(response);
+//       return response.data;
+//     } catch (err) {
+//       console.log(err.message);
+//       return rejectWithValue(err.message);
+//     }
+//   }
+// );
 
 export const updateContact = createAsyncThunk(
   'contacts/updateContact',
-  async (contactId, { rejectWithValue }) => {
+  async ({ id, name, number }, { rejectWithValue }) => {
     try {
-      const response = await axios.patch(
-        `/contacts/${contactId},${{ name: null, number: null }}`
-      );
+      const response = await axios.patch(`/contacts/${id}`, {
+        name: name,
+        number: number,
+      });
       return response.data;
     } catch (err) {
       console.log(err.message);

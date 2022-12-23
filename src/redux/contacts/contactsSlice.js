@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from './contactsOperations';
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+  updateContact,
+} from './contactsOperations';
 import { toast } from 'react-hot-toast';
 
 export const contactsSlice = createSlice({
@@ -77,6 +82,32 @@ export const contactsSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload.msg;
       toast.error(`${action.payload.msg}`);
+    },
+    [updateContact.pending](state) {
+      state.isLoading = true;
+    },
+
+    [updateContact.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      const index = state.items.findIndex(
+        contact => contact.id === action.payload.id
+      );
+      state.items.splice(index, 1, action.payload);
+      toast(`Contact ${action.payload.name} added`, {
+        duration: 1500,
+        icon: '👏',
+        style: {
+          borderRadius: '10px',
+          background: '#9aec3d4d',
+          border: '1px solid #333',
+          color: '#000',
+        },
+      });
+    },
+    [updateContact.rejected](state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
     },
   },
 });

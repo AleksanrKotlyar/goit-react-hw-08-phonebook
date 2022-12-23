@@ -1,18 +1,31 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import { Box } from '../PhoneBook/PhoneBook.styled';
 import { SubmitBtn, LabelForm, InputForm } from './ContactForm.styled';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { addContact } from 'redux/contacts/contactsOperations';
+import { addContact, updateContact } from 'redux/contacts/contactsOperations';
 import { getContacts } from 'redux/contacts/selectors';
 import toast from 'react-hot-toast';
 
-export const ContactForm = () => {
+export const ContactForm = ({
+  handleCloseModal,
+  defaultValue = { nick: '', phone: '' },
+  btnText = 'Add contact',
+  id,
+}) => {
   const [name, setName] = useState('');
+
   const [number, setNumber] = useState('');
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (defaultValue.nick !== '' && defaultValue.phone !== '') {
+      setName(defaultValue.nick);
+      setNumber(defaultValue.phone);
+    }
+  }, [defaultValue.nick, defaultValue.phone]);
 
   const handleOnInputChange = e => {
     switch (e.target.name) {
@@ -34,7 +47,15 @@ export const ContactForm = () => {
       contact => contact.name.toLocaleLowerCase() === normalizeName
     );
 
-    IsContactInList
+    if (
+      defaultValue.nick !== '' &&
+      defaultValue.phone !== '' &&
+      name === defaultValue.nick &&
+      number === defaultValue.phone
+    )
+      return handleCloseModal();
+
+    IsContactInList && id !== IsContactInList.id
       ? toast.error(`${name} is already in contacts`, {
           duration: 1500,
           position: 'top-right',
@@ -45,6 +66,14 @@ export const ContactForm = () => {
             color: '#000',
           },
         })
+      : e.currentTarget.elements[2].innerText === 'Update'
+      ? dispatch(
+          updateContact({
+            id,
+            name: name,
+            number: number,
+          })
+        )
       : dispatch(
           addContact({
             name: e.currentTarget.elements.name.value,
@@ -55,6 +84,7 @@ export const ContactForm = () => {
     if (!IsContactInList) {
       setName('');
       setNumber('');
+      // e.currentTarget.reset();
     }
   };
 
@@ -72,6 +102,7 @@ export const ContactForm = () => {
         <InputForm
           type="text"
           name="name"
+          // defaultValue={defaultValue.nick}
           value={name}
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
@@ -86,6 +117,7 @@ export const ContactForm = () => {
           type="tel"
           name="number"
           value={number}
+          // defaultValue={defaultValue?.phone}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
@@ -94,12 +126,15 @@ export const ContactForm = () => {
         />
       </LabelForm>
       <SubmitBtn type="submit">
-        <AiOutlineUserAdd /> Add contact
+        <AiOutlineUserAdd /> {btnText}
       </SubmitBtn>
     </Box>
   );
 };
 
-// ContactForm.propTypes = {
-//   onSubmitForm: PropTypes.func.isRequired,
-// };
+ContactForm.propTypes = {
+  handleCloseModal: PropTypes.func,
+  defaultValue: PropTypes.object,
+  btnText: PropTypes.string,
+  id: PropTypes.string,
+};
