@@ -15,7 +15,6 @@ export const ContactForm = ({
   id,
 }) => {
   const [name, setName] = useState('');
-
   const [number, setNumber] = useState('');
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();

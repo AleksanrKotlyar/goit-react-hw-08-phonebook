@@ -8,4 +8,6 @@ export const LabelForm = styled('label')`
 
 export const Form = styled('form')`
   width: 320px;
+  display: flex;
+  flex-direction: column;
 `;

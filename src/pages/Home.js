@@ -1,7 +1,11 @@
+import 'animate.css';
+
 const styles = {
   container: {
-    minHeight: 'calc(100vh - 50px)',
+    minHeight: 'calc(100vh - 60px)',
     display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -15,12 +19,16 @@ const styles = {
 export default function Home() {
   return (
     <div style={styles.container}>
-      <h1 style={styles.title}>
-        Contacts manager welcome page{' '}
-        <span role="img" aria-label="Greeting icon">
-          💁‍♀️
-        </span>
+      <h1
+        className="animate__animated  animate__backInDown"
+        style={styles.title}
+      >
+        Welcome, User!
       </h1>
+      <p className="animate__animated  animate__bounceInUp">
+        To use this application you need to register in the system! Or just
+        login if you already have an account here.
+      </p>
     </div>
   );
 }
