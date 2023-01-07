@@ -5,6 +5,7 @@ export const Link = styled(NavLink)`
   display: inline-block;
   text-decoration: none;
   line-height: 1.2;
+  margin-right: ${p => p.theme.space[4]}px;
   padding: 2px;
   border: 1px solid transparent;
   font-weight: 700;

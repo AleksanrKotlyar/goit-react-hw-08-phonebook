@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 import MailLockIcon from '@mui/icons-material/MailLock';
+import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import {
   Button,
   TextField,
@@ -132,7 +133,18 @@ export const RegisterForm = () => {
               color="neutral"
               sx={{ mt: 3, mb: 2, color: '#0f1111', background: '#008296' }}
             >
-              Register
+              <Typography
+                variant="span"
+                style={{ fontFamily: 'Ubuntu', fontWeight: '600' }}
+              >
+                Register
+              </Typography>
+
+              <AppRegistrationIcon
+                sx={{
+                  ml: 1,
+                }}
+              />
             </Button>
           </Box>
         </Box>

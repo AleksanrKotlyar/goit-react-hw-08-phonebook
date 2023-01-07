@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
 import MailLockIcon from '@mui/icons-material/MailLock';
+import LoginIcon from '@mui/icons-material/Login';
 import {
   Button,
   TextField,
@@ -70,7 +71,7 @@ export const LoginForm = () => {
         >
           <Typography
             variant="h4"
-            style={{ fontFamily: 'Caveat', fontWeight: '600' }}
+            style={{ fontFamily: 'Ubuntu', fontWeight: '600' }}
           >
             <Avatar sx={{ m: 1, bgcolor: 'black', ml: 'auto', mr: 'auto' }}>
               <MailLockIcon />
@@ -109,11 +110,28 @@ export const LoginForm = () => {
             <Button
               type="submit"
               fullWidth
+              size="small"
               variant="contained"
               color="neutral"
-              sx={{ mt: 3, mb: 2, color: '#0f1111', background: '#008296' }}
+              sx={{
+                mt: 3,
+                mb: 2,
+                color: '#0f1111',
+                background: '#008296',
+              }}
             >
-              Log In
+              <Typography
+                variant="span"
+                style={{ fontFamily: 'Ubuntu', fontWeight: '600' }}
+              >
+                Log In
+              </Typography>
+
+              <LoginIcon
+                sx={{
+                  ml: 1,
+                }}
+              />
             </Button>
           </Box>
         </Box>

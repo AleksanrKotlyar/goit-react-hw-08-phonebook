@@ -13,7 +13,7 @@ export const UserName = styled.p`
 
 export const LogOut = styled(NavLink)`
   margin-right: auto;
-  margin-left: auto;
+  margin-left: ${p => p.theme.space[4]}px;
   border: 0 solid transparent;
   color: ${p => p.theme.colors.textDark};
   padding: ${p => p.theme.space[1]}px ${p => p.theme.space[2]}px;
