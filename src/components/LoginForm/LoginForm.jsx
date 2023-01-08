@@ -63,7 +63,7 @@ export const LoginForm = () => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            backgroundColor: '#49a09d',
+            backgroundImage: 'linear-gradient(to bottom, #134e5e, #71b280)',
             padding: '20px',
             boxShadow: ' rgb(33 33 33) 0px 2px 10px 1px',
             borderRadius: '5px',
@@ -88,7 +88,7 @@ export const LoginForm = () => {
               fullWidth
               label="Email Address"
               name="email"
-              autoComplete="email"
+              // autoComplete="email"
               type="email"
               value={email}
               variant="standard"
@@ -103,7 +103,7 @@ export const LoginForm = () => {
               name="password"
               label="Password"
               type="password"
-              autoComplete="current-password"
+              // autoComplete="current-password"
               value={password}
               variant="standard"
               onChange={handleOnInputChange}
@@ -120,7 +120,7 @@ export const LoginForm = () => {
                 mt: 3,
                 mb: 2,
                 color: '#0f1111',
-                background: '#008296',
+                background: ' #207289',
               }}
             >
               <Typography

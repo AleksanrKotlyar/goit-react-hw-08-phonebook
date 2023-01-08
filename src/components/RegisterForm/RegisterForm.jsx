@@ -70,7 +70,7 @@ export const RegisterForm = () => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            backgroundColor: '#49a09d',
+            backgroundImage: 'linear-gradient(to bottom, #134e5e, #71b280)',
             padding: '20px',
             boxShadow: ' rgb(33 33 33) 0px 2px 10px 1px',
             borderRadius: '5px',
@@ -92,7 +92,7 @@ export const RegisterForm = () => {
               fullWidth
               label="User Name"
               name="name"
-              autoComplete="name"
+              // autoComplete="name"
               value={name}
               variant="outlined"
               onChange={handleOnInputChange}
@@ -105,7 +105,7 @@ export const RegisterForm = () => {
               fullWidth
               label="Email Address"
               name="email"
-              autoComplete="email"
+              // autoComplete="email"
               type="email"
               value={email}
               variant="outlined"
@@ -119,7 +119,7 @@ export const RegisterForm = () => {
               name="password"
               label="Password"
               type="password"
-              autoComplete="current-password"
+              // autoComplete="current-password"
               value={password}
               variant="outlined"
               onChange={handleOnInputChange}
@@ -132,7 +132,7 @@ export const RegisterForm = () => {
               fullWidth
               variant="contained"
               color="neutral"
-              sx={{ mt: 3, mb: 2, color: '#0f1111', background: '#008296' }}
+              sx={{ mt: 3, mb: 2, color: '#0f1111', background: '#207289' }}
             >
               <Typography
                 variant="span"

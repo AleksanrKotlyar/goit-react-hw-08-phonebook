@@ -31,7 +31,7 @@ export const PhoneBook = () => {
         ml="auto"
         mt="3"
         width="700px"
-        minHeight="75vh"
+        height="85vh"
         border="normal"
         borderRadius="normal"
         borderColor="#3d341aba"
