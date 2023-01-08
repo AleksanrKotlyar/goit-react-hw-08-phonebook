@@ -69,6 +69,8 @@ export const ContactForm = ({
     const IsContactInList = contacts.find(
       contact => contact.name.toLocaleLowerCase() === normalizeName
     );
+    const IsNummberInList = contacts.find(contact => contact.number === number);
+    console.log('IsNummberInList', IsNummberInList);
 
     if (
       defaultValue.nick !== '' &&
@@ -77,6 +79,23 @@ export const ContactForm = ({
       number === defaultValue.phone
     )
       return handleSubmitCloseModal();
+
+    if (IsNummberInList && defaultValue.phone !== IsNummberInList.number) {
+      toast.error(
+        `Contact with phone number ${IsNummberInList.number} is already in exists with name ${IsNummberInList.name}! Try another phone number.`,
+        {
+          duration: 3000,
+          position: 'top-right',
+          style: {
+            borderRadius: '10px',
+            background: '#f6da26',
+            border: '1px solid #333',
+            color: '#000',
+          },
+        }
+      );
+      return;
+    }
 
     IsContactInList && id !== IsContactInList.id
       ? toast.error(
