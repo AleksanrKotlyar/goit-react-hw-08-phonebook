@@ -2,7 +2,10 @@ import styled from 'styled-components';
 import { AiFillEdit } from 'react-icons/ai';
 
 export const ContactNumber = styled.span`
-  margin-left: ${p => p.theme.space[2]}px;
+  /* margin-left: ${p => p.theme.space[2]}px; */
+  width: 150px;
+  text-align: left;
+  margin-left: auto;
 `;
 
 export const DeleteBtn = styled.button`
@@ -21,7 +24,6 @@ export const DeleteBtn = styled.button`
   :hover,
   :focus {
     background-color: ${p => p.theme.colors.colorInteract};
-
     box-shadow: inset -2px -2px 4px 0 ${p => p.theme.colors.colorTitle};
   }
   :active {
@@ -32,7 +34,7 @@ export const DeleteBtn = styled.button`
 
 export const EditBtn = styled(AiFillEdit)`
   margin-right: 15px;
-  margin-left: auto;
+  margin-left: 15px;
   :active,
   :hover,
   :focus {

@@ -1,7 +1,33 @@
 import styled from 'styled-components';
-import { color, space, layout, flexbox, border, shadow } from 'styled-system';
+import {
+  color,
+  space,
+  layout,
+  flexbox,
+  border,
+  shadow,
+  background,
+} from 'styled-system';
 
-export const Box = styled('div')(color, space, layout, flexbox, border, shadow);
+export const Wrapper = styled.div`
+  display: flex;
+`;
+export const WrapperContacts = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  width: 390px;
+`;
+
+export const Box = styled('div')(
+  color,
+  space,
+  layout,
+  flexbox,
+  border,
+  shadow,
+  background
+);
 
 export const Title = styled.h1`
   font-weight: ${p => p.theme.fontWeigth.bold};
@@ -12,12 +38,11 @@ export const Title = styled.h1`
 `;
 
 export const SubTitle = styled.h2`
-  font-weight: ${p => p.theme.fontWeigth.bold};
+  font-weight: ${p => p.theme.fontWeigth.normal};
   text-align: center;
   font-size: ${p => p.theme.fontSizes.l}px;
   color: ${p => p.theme.colors.colorTitle};
   margin-bottom: ${p => p.theme.space[5]}px;
-  margin-top: ${p => p.theme.space[4]}px;
 `;
 
 export const Plug = styled.p`

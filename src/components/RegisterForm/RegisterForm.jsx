@@ -128,6 +128,7 @@ export const RegisterForm = () => {
 
             <Button
               type="submit"
+              size="small"
               fullWidth
               variant="contained"
               color="neutral"

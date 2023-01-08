@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const FilterLabelForm = styled('label')`
-  display: flex;
-  flex-direction: column;
+  margin-right: 10px;
+  font-weight: 600;
 `;
 
 export const FilterInputForm = styled.input`
@@ -11,6 +11,7 @@ export const FilterInputForm = styled.input`
   box-shadow: ${p => p.theme.shadows.input};
   border-radius: ${p => p.theme.radii.normal};
   outline: none;
+  margin-bottom: ${p => p.theme.space[3]}px;
 
   :hover,
   :focus {
@@ -18,3 +19,7 @@ export const FilterInputForm = styled.input`
     box-shadow: none;
   }
 `;
+
+// .input {
+//   align-self: flex-start;
+// }

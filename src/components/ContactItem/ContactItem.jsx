@@ -14,7 +14,7 @@ export const Item = ({ name, number, id }) => {
 
   return (
     <>
-      {name}: <ContactNumber>{number}</ContactNumber>
+      <span>{name}:</span> <ContactNumber>{number}</ContactNumber>
       <EditBtn type="button" onClick={() => setIsModalOpen(true)} />
       <DeleteBtn
         type="button"

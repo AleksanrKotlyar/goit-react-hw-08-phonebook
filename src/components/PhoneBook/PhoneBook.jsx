@@ -1,10 +1,18 @@
 // import React, { useEffect } from 'react';
-import { Box, Title, SubTitle, Plug } from './PhoneBook.styled';
+import {
+  Box,
+  Title,
+  SubTitle,
+  Plug,
+  Wrapper,
+  WrapperContacts,
+} from './PhoneBook.styled';
 import { ContactForm } from '../ContactForm/ContactForm';
 import { Filter } from '../Filter/Filter';
 import { ContactList } from '../ContactList/ContactList';
 import { ContactsSkeleton } from '../ContactsSkeleton/ContactsSkeleton';
 import { useSelector } from 'react-redux';
+
 import 'Utils/index.css';
 // import { fetchContacts } from 'redux/contacts/contactsOperations';
 // import { useDispatch } from 'react-redux';
@@ -21,27 +29,47 @@ export const PhoneBook = () => {
   // }, [dispatch]);
 
   return (
-    <Box
-      bg="mainBg"
-      p="4"
-      mr="auto"
-      ml="auto"
-      mt="3"
-      width="400px"
-      max-height="100vh"
-      border="normal"
-      borderRadius="normal"
-      borderColor="#3d341aba"
-      boxShadow="base"
-      as="section"
-    >
-      <Title>Phonebook</Title>
-      <ContactForm />
-      <SubTitle>Contacts</SubTitle>
-      <Filter />
-      {contacts && isLoading && <ContactsSkeleton />}
-      {contacts.length === 0 && !isLoading && <Plug> No contacts</Plug>}
-      {!isLoading && contacts && <ContactList />}
-    </Box>
+    <>
+      <Box
+        backgroundImage="linear-gradient(to bottom, #1c7791, #71b280);)"
+        backgroundRepeat="no-repeat"
+        backgroundSize="cover"
+        p="4"
+        mr="auto"
+        ml="auto"
+        mt="3"
+        width="700px"
+        minHeight="75vh"
+        border="normal"
+        borderRadius="normal"
+        borderColor="#3d341aba"
+        boxShadow="base"
+        as="section"
+      >
+        <Title>Phonebook</Title>
+        <Wrapper>
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            border="1px  "
+            borderStyle="dotted"
+            borderColor="colorTitle"
+            borderRadius="normal"
+            p="3"
+          >
+            <SubTitle>Add new contact</SubTitle>
+            <ContactForm />
+          </Box>
+          <WrapperContacts>
+            <SubTitle>Contacts</SubTitle>
+            <Filter />
+            {contacts && isLoading && <ContactsSkeleton />}
+            {contacts.length === 0 && !isLoading && <Plug> No contacts</Plug>}
+            {!isLoading && contacts && <ContactList />}
+          </WrapperContacts>
+        </Wrapper>
+      </Box>
+    </>
   );
 };

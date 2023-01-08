@@ -7,7 +7,7 @@ export const Overlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,7 +16,7 @@ export const Overlay = styled.div`
 export const Modal = styled.div`
   position: relative;
   padding: 24px;
-  background-color: ${p => p.theme.colors.tableBgAccent};
+  background-image: linear-gradient(to left, #134e5e, #71b280);
   border-radius: ${p => p.theme.radii.normal};
 `;
 
@@ -30,11 +30,11 @@ export const CloseBtn = styled(AiOutlineCloseCircle)`
   position: absolute;
   top: 5px;
   right: 5px;
-  color: grey;
+  color: black;
 
   :focus,
   :hover,
-  :active {
-    color: black;
+  &.active {
+    color: #eab013ba;
   }
 `;

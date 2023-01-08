@@ -9,20 +9,19 @@ export const EditContact = ({ closeModal, id }) => {
 
   const contact = JSON.parse(items.items).find(item => item.id === id);
 
-  const handleCloseModal = () => closeModal(false);
+  const handleCloseModal = e => {
+    if (e.currentTarget === e.target || e.key === 'Escape') {
+      closeModal(false);
+      document.querySelector('body').style.overflowY = 'visible';
+      window.removeEventListener('keydown', handleCloseModal);
+    }
+  };
 
-  // const editContact = updateContact();
-  // const handleEditContact = async fields => {
-  //   try {
-  //     await editContact({ id: id });
-  //     handleCloseModal();
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
+  document.querySelector('body').style.overflowY = 'hidden';
+  window.addEventListener('keydown', handleCloseModal);
 
   return (
-    <Overlay>
+    <Overlay onClick={handleCloseModal}>
       <Modal>
         <TitleWrapper>
           <p style={{ marginLeft: 'auto', marginRight: 'auto' }}>
@@ -34,7 +33,7 @@ export const EditContact = ({ closeModal, id }) => {
           <ContactForm
             handleCloseModal={handleCloseModal}
             id={id}
-            btnText={'Update'}
+            btnText={'Submit changes'}
             defaultValue={{ nick: contact.name, phone: contact.number }}
           />
         )}
