@@ -19,7 +19,7 @@ const theme = createTheme({
   },
   palette: {
     neutral: {
-      main: '#564926ba',
+      main: '#eab013ba',
     },
   },
 });
@@ -73,8 +73,11 @@ export const LoginForm = () => {
             variant="h4"
             style={{ fontFamily: 'Ubuntu', fontWeight: '600' }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'black', ml: 'auto', mr: 'auto' }}>
-              <MailLockIcon />
+            <Avatar
+              fontSize="small"
+              sx={{ m: 1, bgcolor: 'black', ml: 'auto', mr: 'auto' }}
+            >
+              <MailLockIcon fontSize="small" />
             </Avatar>
             Log In
           </Typography>
@@ -129,8 +132,9 @@ export const LoginForm = () => {
 
               <LoginIcon
                 sx={{
-                  ml: 1,
+                  ml: '1px',
                 }}
+                fontSize="18px"
               />
             </Button>
           </Box>

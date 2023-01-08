@@ -33,7 +33,7 @@ export const Filter = () => {
   const value = useSelector(getFilter);
 
   return (
-    <Box display="flex" alignItems="flex-end">
+    <Box display="flex" alignItems="flex-end" mb="15px">
       <FilterLabelForm htmlFor="filterInputId">
         Find contacts by name:
       </FilterLabelForm>

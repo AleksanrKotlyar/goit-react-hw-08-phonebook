@@ -1,4 +1,3 @@
-// import React, { useEffect } from 'react';
 import {
   Box,
   Title,
@@ -14,19 +13,12 @@ import { ContactsSkeleton } from '../ContactsSkeleton/ContactsSkeleton';
 import { useSelector } from 'react-redux';
 
 import 'Utils/index.css';
-// import { fetchContacts } from 'redux/contacts/contactsOperations';
-// import { useDispatch } from 'react-redux';
+
 import { getContacts, IsLoading } from 'redux/contacts/selectors';
 
 export const PhoneBook = () => {
   const contacts = useSelector(getContacts);
   const isLoading = useSelector(IsLoading);
-
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  // }, [dispatch]);
 
   return (
     <>
@@ -56,6 +48,7 @@ export const PhoneBook = () => {
             borderStyle="dotted"
             borderColor="colorTitle"
             borderRadius="normal"
+            maxHeight="270px"
             p="3"
           >
             <SubTitle>Add new contact</SubTitle>

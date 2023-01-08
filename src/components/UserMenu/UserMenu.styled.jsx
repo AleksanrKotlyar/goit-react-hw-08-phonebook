@@ -31,10 +31,9 @@ export const LogOut = styled(NavLink)`
   :hover,
   :focus {
     background-color: ${p => p.theme.colors.colorInteract};
-
     box-shadow: inset -2px -2px 4px 0 ${p => p.theme.colors.colorTitle};
   }
-  :active {
+  &.active {
     background-color: ${p => p.theme.colors.colorInteract};
     box-shadow: inset 2px 2px 4px 0 ${p => p.theme.colors.colorTitle};
   }

@@ -1,15 +1,38 @@
 import { useEffect, useState } from 'react';
-import { AiOutlineUserAdd } from 'react-icons/ai';
 import { Box } from '../PhoneBook/PhoneBook.styled';
-import { SubmitBtn, LabelForm, InputForm } from './ContactForm.styled';
+import { LabelForm, InputForm } from './ContactForm.styled';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { addContact, updateContact } from 'redux/contacts/contactsOperations';
-import { getContacts } from 'redux/contacts/selectors';
+import { IsLoading, getContacts } from 'redux/contacts/selectors';
+import PersonIcon from '@mui/icons-material/Person';
+import PhoneIcon from '@mui/icons-material/Phone';
+import { LoadingButton } from '@mui/lab';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import toast from 'react-hot-toast';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const themeAddBtn = createTheme({
+  components: {
+    MuiLoadingButton: {
+      styleOverrides: {
+        root: {
+          fontSize: '16px',
+          textTransform: 'capitalize',
+          color: '#000000',
+          borderColor: '#3d341aba',
+          '&:hover': {
+            borderColor: '#eab013ba',
+            boxShadow: 'inset 0 0 10px 1px #eab013ba',
+          },
+        },
+      },
+    },
+  },
+});
 
 export const ContactForm = ({
-  handleCloseModal,
+  handleSubmitCloseModal,
   defaultValue = { nick: '', phone: '' },
   btnText = 'Add contact',
   id,
@@ -17,6 +40,7 @@ export const ContactForm = ({
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const contacts = useSelector(getContacts);
+  const isLoading = useSelector(IsLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -52,19 +76,22 @@ export const ContactForm = ({
       name === defaultValue.nick &&
       number === defaultValue.phone
     )
-      return handleCloseModal();
+      return handleSubmitCloseModal();
 
     IsContactInList && id !== IsContactInList.id
-      ? toast.error(`${name} is already in contacts`, {
-          duration: 1500,
-          position: 'top-right',
-          style: {
-            borderRadius: '10px',
-            background: '#f6da26',
-            border: '1px solid #333',
-            color: '#000',
-          },
-        })
+      ? toast.error(
+          `Contact with name ${name}} is already in exists! Try another name`,
+          {
+            duration: 1500,
+            position: 'top-right',
+            style: {
+              borderRadius: '10px',
+              background: '#f6da26',
+              border: '1px solid #333',
+              color: '#000',
+            },
+          }
+        )
       : e.currentTarget.elements[2].innerText === 'Update'
       ? dispatch(
           updateContact({
@@ -92,48 +119,68 @@ export const ContactForm = ({
       as="form"
       display="flex"
       flexDirection="column"
-      alignItems="center"
       onSubmit={handleOnSubmit}
       autocomplete="off"
     >
-      <LabelForm>
-        Name
-        <InputForm
-          type="text"
-          name="name"
-          // defaultValue={defaultValue.nick}
-          value={name}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-          onChange={handleOnInputChange}
-          autocomplete="off"
-        />
+      <LabelForm htmlFor="nameId">
+        <PersonIcon sx={{ color: 'black' }} fontSize="small" />
+        <span
+          style={{ marginRight: '5px', fontSize: '20px', fontWeight: '600' }}
+        >
+          Name
+        </span>
       </LabelForm>
+      <InputForm
+        id="nameId"
+        type="text"
+        name="name"
+        value={name}
+        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+        required
+        onChange={handleOnInputChange}
+        autocomplete="off"
+        autoFocus
+      />
+
       <LabelForm>
-        Number
-        <InputForm
-          type="tel"
-          name="number"
-          value={number}
-          maxLength="20"
-          // defaultValue={defaultValue?.phone}
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-          onChange={handleOnInputChange}
-          autocomplete="off"
-        />
+        <PhoneIcon sx={{ color: 'black' }} fontSize="small" />
+        <span
+          style={{ marginRight: '5px', fontSize: '20px', fontWeight: '600' }}
+        >
+          Number
+        </span>
       </LabelForm>
-      <SubmitBtn type="submit">
-        <AiOutlineUserAdd /> {btnText}
-      </SubmitBtn>
+      <InputForm
+        type="tel"
+        name="number"
+        value={number}
+        maxLength="20"
+        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+        required
+        onChange={handleOnInputChange}
+        autocomplete="off"
+      />
+      <ThemeProvider theme={themeAddBtn}>
+        <LoadingButton
+          loading={isLoading}
+          loadingPosition="end"
+          endIcon={<AddCircleOutlineIcon />}
+          variant="outlined"
+          type="submit"
+          size="small"
+          sx={{ mt: '20px' }}
+        >
+          {btnText}
+        </LoadingButton>
+      </ThemeProvider>
     </Box>
   );
 };
 
 ContactForm.propTypes = {
-  handleCloseModal: PropTypes.func,
+  handleSubmitCloseModal: PropTypes.func,
   defaultValue: PropTypes.object,
   btnText: PropTypes.string,
   id: PropTypes.string,

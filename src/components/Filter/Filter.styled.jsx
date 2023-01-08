@@ -11,7 +11,6 @@ export const FilterInputForm = styled.input`
   box-shadow: ${p => p.theme.shadows.input};
   border-radius: ${p => p.theme.radii.normal};
   outline: none;
-  margin-bottom: ${p => p.theme.space[3]}px;
 
   :hover,
   :focus {

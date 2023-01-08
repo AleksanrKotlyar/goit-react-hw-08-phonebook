@@ -40,7 +40,7 @@ export const contactsSlice = createSlice({
     [addContact.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.items.push(action.payload);
+      state.items = [action.payload, ...state.items];
       toast(`Contact ${action.payload.name} added`, {
         duration: 1500,
         icon: '👏',

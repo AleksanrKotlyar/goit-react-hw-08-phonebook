@@ -3,10 +3,8 @@ import { fetchContacts, addContact, deleteContact } from './contactsOperations';
 
 const contacts = createReducer([], {
   [fetchContacts.fulfilled]: (_, action) => action.payload,
-
   [addContact.fulfilled]: (state, action) => {
     return [action.payload, ...state.contacts];
-   
   },
   [deleteContact.fulfilled]: (state, action) => {
     const index = state.contacts.findIndex(

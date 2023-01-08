@@ -1,6 +1,4 @@
-// import { updateContact } from 'redux/contacts/contactsOperations';
 import { Modal, Overlay, TitleWrapper, CloseBtn } from './ContactEdit.styled';
-
 import { ContactForm } from '../ContactForm/ContactForm';
 
 export const EditContact = ({ closeModal, id }) => {
@@ -16,6 +14,7 @@ export const EditContact = ({ closeModal, id }) => {
       window.removeEventListener('keydown', handleCloseModal);
     }
   };
+  const handleSubmitCloseModal = () => closeModal(false);
 
   document.querySelector('body').style.overflowY = 'hidden';
   window.addEventListener('keydown', handleCloseModal);
@@ -24,16 +23,24 @@ export const EditContact = ({ closeModal, id }) => {
     <Overlay onClick={handleCloseModal}>
       <Modal>
         <TitleWrapper>
-          <p style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+          <p
+            style={{
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              color: '#eab013ba',
+              fontSize: '24px',
+              marginBottom: '30px',
+            }}
+          >
             Update contact
           </p>
-          <CloseBtn type="button" onClick={handleCloseModal} />
+          <CloseBtn type="button" onClick={handleSubmitCloseModal} />
         </TitleWrapper>
         {contact && (
           <ContactForm
-            handleCloseModal={handleCloseModal}
+            handleSubmitCloseModal={handleSubmitCloseModal}
             id={id}
-            btnText={'Submit changes'}
+            btnText={'Update'}
             defaultValue={{ nick: contact.name, phone: contact.number }}
           />
         )}

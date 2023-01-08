@@ -19,7 +19,7 @@ const theme = createTheme({
   },
   palette: {
     neutral: {
-      main: '#564926ba',
+      main: '#eab013ba',
     },
   },
 });
@@ -81,7 +81,7 @@ export const RegisterForm = () => {
             style={{ fontFamily: 'Caveat', fontWeight: '600' }}
           >
             <Avatar sx={{ m: 1, bgcolor: 'black', ml: 'auto', mr: 'auto' }}>
-              <MailLockIcon />
+              <MailLockIcon fontSize="small" />
             </Avatar>
             Register
           </Typography>
@@ -143,8 +143,9 @@ export const RegisterForm = () => {
 
               <AppRegistrationIcon
                 sx={{
-                  ml: 1,
+                  ml: '1px',
                 }}
+                fontSize="18px"
               />
             </Button>
           </Box>

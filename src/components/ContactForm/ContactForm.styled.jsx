@@ -2,20 +2,29 @@ import styled from 'styled-components';
 
 export const LabelForm = styled('label')`
   display: flex;
-  flex-direction: column;
+  align-items: end;
+  margin-bottom: ${p => p.theme.space[2]}px;
 `;
 export const InputForm = styled.input`
-  background-color: ${p => p.theme.colors.inputColor};
-  width: 200px;
-  box-shadow: ${p => p.theme.shadows.input};
-  border-radius: ${p => p.theme.radii.normal};
-  outline: none;
+  width: 250px;
+  font-size: 16px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 0.5px solid #000000;
+  margin-bottom: ${p => p.theme.space[4]}px;
 
-  :active,
-  :hover,
-  :focus {
-    background-color: ${p => p.theme.colors.colorInteract};
-    box-shadow: none;
+  :hover {
+    outline: none;
+    box-shadow: inset 0px -3px 0px -2px ${p => p.theme.colors.colorTitle};
+    transition: box-shadow linear 100ms;
+  }
+  :focus,
+  :active {
+    outline: none;
+    box-shadow: inset 0px -8px 3px -4px ${p => p.theme.colors.colorTitle};
+    border-radius: 3px;
+    border-color: ${p => p.theme.colors.colorTitle};
+    transition: box-shadow linear 500ms;
   }
 `;
 

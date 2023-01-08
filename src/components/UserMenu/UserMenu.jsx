@@ -23,6 +23,7 @@ export const UserMenu = () => {
           sx={{
             ml: 1,
           }}
+          fontSize="10px"
         />
       </LogOut>
     </Wrapper>
