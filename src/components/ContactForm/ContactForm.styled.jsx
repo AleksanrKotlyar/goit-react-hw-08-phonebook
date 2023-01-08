@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const LabelForm = styled('label')`
   display: flex;
-  align-items: end;
+  align-items: center;
   margin-bottom: ${p => p.theme.space[2]}px;
 `;
 export const InputForm = styled.input`
